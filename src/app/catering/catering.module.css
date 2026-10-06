@@ -1,0 +1,54 @@
+/* Scoped Styles for Catering Page (src/app/catering/catering.module.css) */
+
+.cateringContainer {
+  min-height: 100vh;
+  background-color: #09090b;
+  color: #fafafa;
+  padding-bottom: 5rem;
+}
+
+.cateringHero {
+  padding: 3.5rem 0 2.5rem 0;
+  background: radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.18) 0%, rgba(9, 9, 11, 0) 70%);
+  border-bottom: 1px solid #18181b;
+}
+
+.estimatorCard {
+  background: linear-gradient(145deg, #18181b 0%, #121215 100%);
+  border: 1px solid #27272a;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6);
+}
+
+.packageCard {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.packageCard:hover {
+  border-color: #e11d48;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px -10px rgba(225, 29, 72, 0.25);
+}
+
+.packageHighlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #d4d4d8;
+  line-height: 1.4;
+}
+
+.inquiryFormCard {
+  background: #121214;
+  border: 1px solid #27272a;
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
