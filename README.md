@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PrimeHeritage Foods & Catering Services
 
-## Getting Started
+A mobile-first, agile fast food ordering and catering services platform tailored for **PrimeHeritage Foods & Catering Services**, serving customers within the **Ikorodu, Lagos** vicinity.
 
-First, run the development server:
+- **Kitchen Anchor**: `6.613065° N, 3.541461° E` (Ikorodu Central Axis, Lagos)
+- **WhatsApp Dispatch Hotline**: `09026875420` (+2349026875420)
+- **Currency**: Nigerian Naira (₦ / NGN)
+- **Payment Gateway**: Paystack
+- **Mobile Experience**: Installable Progressive Web App (PWA)
+
+---
+
+## 🍽 The 4 Core Pages (Agile Launchpad)
+
+1. **Storefront Home (`/`)**:
+   - Hero banner with quick conversion CTAs.
+   - Interactive Ikorodu vicinity delivery checker with GPS and landmark detection.
+   - Top 4 signature hits with 1-click cart addition.
+   - Catering services teaser.
+   - Download mobile app PWA prompt.
+   - "Coming Soon" badges for future loyalty features.
+
+2. **Food Menu & Ordering (`/menu`)**:
+   - Category filtering (*Rice & Combos, Grills & Asun, Fast Bites & Chops, Refreshing Drinks*).
+   - Live search bar.
+   - Food item customization modal (protein choice, extra dodo, coleslaw, special kitchen notes).
+   - Sticky mobile bottom cart bar.
+
+3. **Catering Services (`/catering`)**:
+   - 3 curated catering tiers (*Mini Heritage Box, Celebration Feast, Grand Banquet*).
+   - Interactive guest headcount slider (15–500 guests) with dynamic real-time budget calculation.
+   - Formal booking inquiry form with direct WhatsApp quotation dispatch.
+
+4. **Checkout & Order Dispatch (`/checkout`)**:
+   - Delivery vs. Store Pickup selector.
+   - Distance calculation from kitchen coordinates with 18km freshness enforcement.
+   - Out-of-radius WhatsApp courier booking fallback.
+   - Paystack Inline online payment.
+   - Automatic WhatsApp order ticket formatting and dispatch to `+2349026875420`.
+   - On-screen receipt confirmation.
+
+---
+
+## 🚚 Precision Distance Delivery Engine
+
+- **Base Fee**: `₦800` (covers up to `2.0 km`).
+- **Per-Km Rate**: `₦200 / km` for distances beyond 2.0 km (rounded up to the next full km).
+- **Freshness Cut-off**: `18.0 km`.
+- **Out-of-Radius Handler**: If distance $> 18.0$ km, online checkout is disabled with:
+  > *"Delivery distance exceeds our 18km kitchen freshness limit. Contact us on WhatsApp for special courier booking."*
+  with a direct 1-tap WhatsApp consultation button.
+- **Store Pickup**: `₦0` (always available).
+
+---
+
+## 🔒 Security Architecture
+
+- **Server-Side Paystack Verification (`/api/paystack/verify`)**: Secret key isolated on server; validates transaction reference and verifies amount paid in Kobo (`₦1 = 100 kobo`).
+- **Backend Vicinity Guard (`/api/orders`)**: Enforces 18km cut-off before logging orders.
+- **Supabase Database Schema (`supabase/schema.sql`)**: Row-Level Security (RLS) policies protecting customer personal information.
+- **HTTP Security Headers (`next.config.ts`)**: HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy.
+
+---
+
+## 🛠 Local Setup & Development
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Configure environment variables
+cp .env.example .env.local
+
+# 3. Start local development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Vercel Deployment Guide
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your code to GitHub.
+2. Import the repository in [Vercel](https://vercel.com).
+3. Ensure **Root Directory** is set to `./` (default).
+4. Ensure **Output Directory Override** is turned **OFF** (Next.js automatically outputs to `.next`).
+5. Add environment variables in Vercel project settings:
+   - `NEXT_PUBLIC_PAYSTACK_KEY`
+   - `PAYSTACK_SECRET_KEY`
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+6. Click **Deploy**.
